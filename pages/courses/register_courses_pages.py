@@ -23,7 +23,7 @@ class RegisterCoursesPage(BasePage):
     _cc_exp = "(//input[@name='exp-date'])"
     _cc_cvc = "(//input[@name='cvc'])"
     _submit_enroll = "(//button[@class='zen-subscribe sp-buy btn btn-default btn-lg btn-block btn-gtw btn-submit checkout-button dynamic-button'])"
-    _enrol_error_message = "//div[@role='alert']//p[@class='dynamic-text']"
+    _enrol_error_message = "(//span[normalize-space()='Your card number is incorrect.'])[1]"
 
     def clickAllCoursesTab(self):
         self.elementClick(self._all_courses, locatorType="xpath")
