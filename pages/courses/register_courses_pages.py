@@ -16,8 +16,6 @@ class RegisterCoursesPage(BasePage):
     _search_button = "(//button[@class='find-course search-course'])"
     _all_courses = "(//a[@class='dynamic-link' and text()='ALL COURSES'])"
     _course = "(//div[@id='course-list']//h4[@class='dynamic-heading' and contains (text(),'{0}')])"
-    # _course_1 = "(//a[@href='/courses/javascript-for-beginners'])"
-    # _course_2 = "(//a[@href='/courses/cypress-automation-framework'])"
     _enroll_button = "(//button[@class='dynamic-button btn btn-default btn-lg btn-enroll' and text()='Enroll in Course'])"
     _cc_num = "(//input[@name='cardnumber' and @aria-label='Credit or debit card number'])"
     _cc_exp = "(//input[@name='exp-date'])"
@@ -27,17 +25,11 @@ class RegisterCoursesPage(BasePage):
 
     def clickAllCoursesTab(self):
         self.elementClick(self._all_courses, locatorType="xpath")
-        # self.elementClick(self._search_button, locatorType="xpath")
 
     def enterCourseName(self, name):
         self.sendKeys(name, self._search_box)
         self.elementClick(self._search_button, locatorType="xpath")
 
-    # def selectCourseToEnroll(self):
-    #     self.elementClick(self._course, locatorType="xpath")
-
-    # def selectCourseToEnroll_1(self):
-    #     self.elementClick(self._course_2, locatorType="xpath")
 
     def selectCourseToEnroll(self, fullCourseName):
         self.elementClick(locator=self._course.format(fullCourseName), locatorType="xpath")
@@ -47,21 +39,18 @@ class RegisterCoursesPage(BasePage):
 
     def enterCardNum(self, num):
         time.sleep(3)
-        # self.switchToIframe(name="_cc_num")
         self.SwitchFrameByIndex(self._cc_num, locatorType="xpath")
         self.sendKeysWhenReady(num, locator=self._cc_num, locatorType="xpath")
         self.switchToDefaultContent()
 
     def enterCardExp(self, exp):
         time.sleep(3)
-        # self.switchToIframe(name="_cc_exp")
         self.SwitchFrameByIndex(self._cc_exp, locatorType="xpath")
         self.sendKeysWhenReady(exp, locator=self._cc_exp, locatorType="xpath")
         self.switchToDefaultContent()
 
     def enterCardCvc(self, cvc):
         time.sleep(3)
-        # self.switchToIframe(name="_cc_cvc")
         self.SwitchFrameByIndex(self._cc_cvc, locatorType="xpath")
         self.sendKeysWhenReady(cvc, locator=self._cc_cvc, locatorType="xpath")
         self.switchToDefaultContent()

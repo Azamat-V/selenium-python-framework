@@ -40,8 +40,6 @@ class LoginPage(BasePage):
 
     def login(self, email="", password=""):
         self.clickLoginLink()
-        # self.clearFields()
-        # time.sleep(3)
         self.enterEmail(email)
         self.enterPassword(password)
         self.clickLoginButton()
@@ -60,19 +58,10 @@ class LoginPage(BasePage):
                                        locatorType="xpath")
         return result
 
-    # def clearFields(self):
-    #     emailField = self.getElement(locator=self._email_field, locatorType="xpath")
-    #     emailField.clear()
-    #     passwordField = self.getElement(locator=self._password_field, locatorType="xpath")
-    #     passwordField.clear()
 
     def verifyTitle(self):
         return self.verifyPageTitle("My Courses")
 
-    # def logout(self):
-    #     self.nav.navigateToUserSettings()
-    #     self.elementClick(locator="(//a[@href='/logout' and contains(text(), 'Logout')])",
-    #                       locatorType="xpath")
 
     def logout(self):
         self.nav.navigateToUserSettings()
