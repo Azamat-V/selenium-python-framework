@@ -275,17 +275,21 @@ class SeleniumDriver():
             # Scroll Down
             self.driver.execute_script("window.scrollBy(0, 700);")
 
-    def webScroll_1(self, direction="up"):
-        """
-        NEW METHOD
-        """
-        if direction == "up":
-            # Scroll Up
-            self.driver.execute_script("window.scrollBy(0, -1000);")
-
-        if direction == "down":
-            # Scroll Down
+        if direction == "little down":
+            # Scroll a little
             self.driver.execute_script("window.scrollBy(0, 100);")
+
+    # def webScroll_1(self, direction="up"):
+    #     """
+    #     NEW METHOD
+    #     """
+    #     if direction == "up":
+    #         # Scroll Up
+    #         self.driver.execute_script("window.scrollBy(0, -1000);")
+    #
+    #     if direction == "down":
+    #         # Scroll Down
+    #         self.driver.execute_script("window.scrollBy(0, 100);")
 
     def SwitchFrameByIndex(self, locator, locatorType="xpath"):
         """

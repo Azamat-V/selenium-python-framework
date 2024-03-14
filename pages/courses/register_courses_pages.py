@@ -64,7 +64,8 @@ class RegisterCoursesPage(BasePage):
         self.elementClick(self._submit_enroll, locatorType="xpath")
 
     def enrollCourse(self, num="", exp="", cvc=""):
-        self.webScroll_1(direction="down")
+        self.webScroll(direction="little down")
+        # self.webScroll_1(direction="down")
         self.clickEnrollToCourseButton()
         self.webScroll(direction="down")
         self.enterCreditCardInformation(num, exp, cvc)
