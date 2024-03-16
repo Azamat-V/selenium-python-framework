@@ -9,9 +9,9 @@ from pages.home.login_page_171 import LoginPage
 @pytest.fixture()
 # Fixture without attributes applies to method
 def setUp():
-    print("Preconditions method(test)")
+    print("Preconditions of the  method(test)")
     yield
-    print("Postconditions method(test)")
+    print("Postconditions of the method(test)")
 
 
 @pytest.fixture(scope="class")
@@ -45,6 +45,3 @@ def browser(request):
 def osType(request):
     return request.config.getoption("--osType")
 
-# This command launches tests in terminal or command line
-# py.test -v -s test_class_demo1_162.py --browser firefox --osType Windows
-# py.test -v -s pytestpackage\test_class_demo1_162.py --browser firefox --osType Windows

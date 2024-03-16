@@ -22,19 +22,19 @@ class AssertStatus(SeleniumDriver):
         Inits CheckPoint class
         """
         super(AssertStatus, self).__init__(driver)
-        self.resultList = []
+        self.resultList = [] # By default, result list is empty
 
     def setResult(self, result, resultMessage):
         try:
             if result is not None:
-                if result:
+                if result: # If result is True
                     self.resultList.append("PASS")
                     self.log.info("### VERIFICATION SUCCESSFUL :: + " + resultMessage)
-                else:
+                else: # If result is False
                     self.resultList.append("FAIL")
                     self.log.error("### VERIFICATION FAILED :: + " + resultMessage)
                     self.screenshot(resultMessage)
-            else:
+            else: # If result is None
                 self.resultList.append("FAIL")
                 self.log.error("### VERIFICATION FAILED :: + " + resultMessage)
                 self.log.info(resultMessage)
@@ -44,13 +44,14 @@ class AssertStatus(SeleniumDriver):
             self.log.info(resultMessage)
             print_stack()
 
-
+    # AssertStatus.mark.pass or fail(This method applies to the testcase)
     def mark(self, result, resultMessage):
         """
         Mark the result of the verification point in a test case
         """
         self.setResult(result, resultMessage)
 
+    # AssertStatus.markFinal.pass or fail(This method applies to the end of the testcase)
     def markFinal(self, testName, result, resultMessage):
         """
         Mark the final result of the verification point in a test case

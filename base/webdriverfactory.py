@@ -44,6 +44,7 @@ class WebDriverFactory():
 
         baseURL = "https://www.letskodeit.com/"
         if self.browser == "chrome":
+            # Set chrome driver as above code if it's necessary
             driver = webdriver.Chrome()
         elif self.browser == "firefox":
             driver = webdriver.Firefox()
