@@ -32,7 +32,7 @@ class SeleniumDriver():
             self.driver.save_screenshot(destinationFile)
             self.log.info("Screenshot saved to the directory" + destinationFile)
         except:
-            self.log.error("### An exeption had occured when it's being taken the screenshot")
+            self.log.error("### An exception had occurred when it's being taken the screenshot")
             print_stack()
 
     def getTitle(self):
@@ -279,17 +279,6 @@ class SeleniumDriver():
             # Scroll a little
             self.driver.execute_script("window.scrollBy(0, 100);")
 
-    # def webScroll_1(self, direction="up"):
-    #     """
-    #     NEW METHOD
-    #     """
-    #     if direction == "up":
-    #         # Scroll Up
-    #         self.driver.execute_script("window.scrollBy(0, -1000);")
-    #
-    #     if direction == "down":
-    #         # Scroll Down
-    #         self.driver.execute_script("window.scrollBy(0, 100);")
 
     def SwitchFrameByIndex(self, locator, locatorType="xpath"):
         """
@@ -347,7 +336,7 @@ class SeleniumDriver():
         if name:
             self.driver.switch_to.frame(name)
         if index:
-            self.log.info("Switched frame with index")
+            self.log.info("Switched to frame with index")
             self.log.info(str(index))
             self.driver.switch_to.frame(index)
 
@@ -386,3 +375,36 @@ class SeleniumDriver():
             element = self.getElement(locator=locator, locatorType=locatorType)
         value = element.get_attribute(attribute)
         return value
+
+    def isEnabled(self, locator, locatorType="id", info=""):
+        """
+        Check if element is enabled
+
+        Parameters:
+            1. Required:
+                1. locator - Locator of the element to check
+            2. Optional:
+                1. locatorType - Type of the locator(id(default), xpath, css, className, linkText)
+                2. info - Information about the element, label/name of the element
+        Returns:
+            boolean
+        Exception:
+            None
+        """
+        element = self.getElement(locator, locatorType=locatorType)
+        enabled = False
+        try:
+            attributeValue = self.getElementAttributeValue(element=element, attribute="disabled")
+            if attributeValue is not None:
+                enabled = element.is_enabled()
+            else:
+                value = self.getElementAttributeValue(element=element, attribute="class")
+                self.log.info("Attribute value From Application Web UI --> :: " + value)
+                enabled = not ("disabled" in value)
+            if enabled:
+                self.log.info("Element :: '" + info + "' is enabled")
+            else:
+                self.log.info("Element :: '" + info + "' is not enabled")
+        except:
+            self.log.error("Element :: '" + info + "' state could not be found")
+        return enabled

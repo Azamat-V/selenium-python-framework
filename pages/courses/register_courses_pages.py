@@ -17,7 +17,7 @@ class RegisterCoursesPage(BasePage):
     _all_courses = "(//a[@class='dynamic-link' and text()='ALL COURSES'])"
     _course = "(//div[@id='course-list']//h4[@class='dynamic-heading' and contains (text(),'{0}')])"
     _enroll_button = "(//button[@class='dynamic-button btn btn-default btn-lg btn-enroll' and text()='Enroll in Course'])"
-    _cc_num = "(//input[@name='cardnumber' and @aria-label='Credit or debit card number'])"
+    _cc_num = "(//input[@aria-label='Credit or debit card number'])"
     _cc_exp = "(//input[@name='exp-date'])"
     _cc_cvc = "(//input[@name='cvc'])"
     _submit_enroll = "(//button[@class='zen-subscribe sp-buy btn btn-default btn-lg btn-block btn-gtw btn-submit checkout-button dynamic-button'])"
@@ -75,7 +75,7 @@ class RegisterCoursesPage(BasePage):
 
 
     def verifyEnrollFailed(self):
-         result = self.isElementPresent(locator=self._enrol_error_message,
+         result = self.isElementDisplayed(locator=self._enrol_error_message,
                                         locatorType="xpath")
          return result
 

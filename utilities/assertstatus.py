@@ -38,10 +38,12 @@ class AssertStatus(SeleniumDriver):
                 self.resultList.append("FAIL")
                 self.log.error("### VERIFICATION FAILED :: + " + resultMessage)
                 self.log.info(resultMessage)
+                self.screenshot(resultMessage)
         except:
             self.resultList.append("FAIL")
             self.log.error("### Exeption Occured :: + " + resultMessage)
             self.log.info(resultMessage)
+            self.screenshot(resultMessage)
             print_stack()
 
     # AssertStatus.mark.pass or fail(This method applies to the testcase)

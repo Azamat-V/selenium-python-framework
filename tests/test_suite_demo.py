@@ -7,7 +7,7 @@ from tests.courses.register_courses_csv_data_197 import RegisterCoursesCSVDataTe
 tc_1 = unittest.TestLoader().loadTestsFromTestCase(LoginTests)
 ts_2 = unittest.TestLoader().loadTestsFromTestCase(RegisterCoursesCSVDataTests)
 
-# Create a test suite combining all yest classes
+# Create a test suite combining all test classes
 
 smokeTest = unittest.TestSuite([tc_1, ts_2])
 

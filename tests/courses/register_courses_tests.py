@@ -14,7 +14,10 @@ class RegisterCoursesTests(unittest.TestCase):
 
     @pytest.mark.run()
     def test_invalidEnrollment(self):
-        self.rp.enrollCourse("Java", "4400 4345 8071 0712", "12/25", "222")
+        self.rp.clickAllCoursesTab()
+        self.rp.enterCourseName("Java")
+        self.rp.selectCourseToEnroll("JavaScript for beginners")
+        self.rp.enrollCourse("8500 4345 8071 0712", "12/25", "222")
         self.rp.verifyEnrollFailed()
 
 

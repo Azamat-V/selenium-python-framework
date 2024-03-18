@@ -1,7 +1,6 @@
 import utilities.custom_logger_175 as cl
 from base.basepage import BasePage
 import logging
-import time
 
 class NavigationPage(BasePage):
 
@@ -16,14 +15,12 @@ class NavigationPage(BasePage):
     # Locators
     _my_courses = "All courses"
     _user_settings_icon = "(//div[@class='dropdown']/button[@id='dropdownMenu1'])"
-    # _user_settings_icon = "//a[@class='dynamic-link' and contains (text(), 'Sign In')])"
+
 
 
     def navigateToAllCourses(self):
         self.elementClick(locator=self._my_courses, locatorType="link")
 
-    # def navigateToUserSettings(self):
-    #     self.elementClick(locator=self._user_settings_icon, locatorType="xpath")
 
     def navigateToUserSettings(self):
         userSettingsElement = self.waitForElement(locator=self._user_settings_icon,

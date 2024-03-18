@@ -18,11 +18,14 @@ class RegisterCoursesTests(unittest.TestCase):
 
 
     @pytest.mark.run()
-    @data(("JavaScript for beginners", "8500 4345 8071 0712", "12/25", "222"), ("Cypress.io Test Automation", "4400 4345 8071 0712", "12/25", "222"))
+    @data(("JavaScript for beginners", "8500 4345 8071 0712", "12/25", "222"), ("Cypress.io Test Automation", "8500 4345 8071 0522", "12/25", "222"))
     @unpack
-    def test_invalidEnrollment(self, courseName, ccNum, ccExp, ccCVC):
-        self.rp.enrollCourse(courseName, num=ccNum, exp=ccExp, cvc=ccCVC)
-        self.rp.verifyEnrollFailed()
+    def test_invalidEnrollment(self, courseName, ccNum, ccExp, cCVC):
+        self.rp.clickAllCoursesTab()
+        self.rp.selectCourseToEnroll(fullCourseName=courseName)
+        self.rp.enrollCourse(num=ccNum, exp=ccExp, cvc=cCVC)
+        result = self.rp.verifyEnrollFailed()
+        self.ts.markFinal("test_invalidEnrollment", result, "Enrollment Failed Message" )
         self.driver.find_element(By.XPATH, "(//a[@href='/courses' and text()='ALL COURSES'])").click
         print("I clicked on it")
         time.sleep(3)

@@ -23,7 +23,7 @@ class Util(object):
         if info is not None:
             self.log.info("Wait :: '" + str(sec) + "' seconds for " + info)
         try:
-            time.sleep()
+            time.sleep(3)
         except InterruptedError:
             traceback.print_stack()
 
